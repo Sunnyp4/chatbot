@@ -13,11 +13,13 @@ const ChatBox = () => {
      
     if (input.trim() === "") return;
     setMessages((prev)=>[...prev,{text:input}])
-    const url=`https://dev.centiloquy.com/runtime/webhook/068c0308-28bf-452e-a077-29864c50c53c/webhookTrigger/f17db958-9cae-43e2-bd07-b70295335365`
+   // const url=`https://dev.centiloquy.com/runtime/webhook/068c0308-28bf-452e-a077-29864c50c53c/webhookTrigger/f17db958-9cae-43e2-bd07-b70295335365`
     try{
-        const res= await  axios.get(url,{
-            params: { query: input }
-        })
+        const res = await axios.get(
+  "/api/runtime/webhook/068c0308-28bf-452e-a077-29864c50c53c/webhookTrigger/f17db958-9cae-43e2-bd07-b70295335365",
+  { params: { query: input } }
+);
+
          const newMessage = { text: res.data.output, sender: "user"};
     setMessages(prev => [...prev, newMessage]);
     }
