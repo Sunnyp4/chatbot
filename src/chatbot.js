@@ -12,6 +12,7 @@ const ChatBox = () => {
   const [loading,setLoading]=useState(false)
   const client = new OpenAI({
   apiKey:process.env.REACT_APP_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true
 });
 
   const sendMessage = async() => {
